@@ -1,0 +1,29 @@
+name prod-deployment
+
+run-name: Pushing code to main branch
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  checkout-node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout node and actions
+        uses: actions/checkout@v5
+      - name: set up node and required version
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      
+      - name: install dependencies
+        run: npm install
+
+      - name: build my application
+        run: npm run build
+
+      - name: Deploy to Production
+        run: |
+          echo "🚀 Deploying to production..."
+          # e.g., scp, rsync, serverless deploy, or a custom script
