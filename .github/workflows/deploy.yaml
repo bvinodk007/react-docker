@@ -1,7 +1,5 @@
 name prod-deployment
 
-run-name: Pushing code to main branch
-
 on:
   push:
     branches: [ main ]
